@@ -47,7 +47,7 @@ pip install SpeechRecognition
 ## Installation
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/audiobook-splitter.git
+git clone https://github.com/bbenkle/audiobook-splitter.git
 cd audiobook-splitter
 ```
 
