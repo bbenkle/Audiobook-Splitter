@@ -17,12 +17,54 @@ A Python tool to split audiobook files into individual chapter files. Supports m
 
 ---
 
+## Quick Start
+
+### macOS / Linux
+
+```bash
+git clone https://github.com/bbenkle/audiobook-splitter.git
+cd audiobook-splitter
+bash setup.sh
+python3 standalone_wrapper.py --input your_audiobook.m4b
+```
+
+### Windows
+
+```powershell
+git clone https://github.com/bbenkle/audiobook-splitter.git
+cd audiobook-splitter
+.\setup.bat
+python standalone_wrapper.py --input your_audiobook.m4b
+```
+
+The setup scripts will automatically download ffmpeg and ffprobe for you.
+
+---
+
 ## Requirements
 
-- Python 3.x
-- ffmpeg and ffprobe
+### Python 3
 
-### Install ffmpeg
+**macOS:** Python 3 is pre-installed. Open Terminal and verify with:
+```bash
+python3 --version
+```
+
+**Linux:** Python 3 is pre-installed on most distributions. If not:
+```bash
+sudo apt-get install python3   # Ubuntu/Debian
+sudo dnf install python3       # Fedora
+```
+
+**Windows:** Python 3 is not included with Windows and must be installed manually:
+1. Go to [python.org/downloads](https://www.python.org/downloads/)
+2. Download the latest Python 3 installer
+3. Run the installer — **make sure to check "Add Python to PATH"** during installation
+4. Verify in Command Prompt: `python --version`
+
+### ffmpeg
+
+Handled automatically by the setup scripts below. If you prefer to install manually:
 
 **macOS:**
 ```bash
@@ -34,24 +76,46 @@ brew install ffmpeg
 sudo apt-get install ffmpeg
 ```
 
-**Windows:**  
-Download from [ffmpeg.org](https://ffmpeg.org/download.html) and add to your PATH.
+**Windows:**
+Download from [ffmpeg.org](https://ffmpeg.org/download.html) and add to your PATH, or just use the setup script.
 
 ### Optional (for speech recognition method)
 ```bash
-pip install SpeechRecognition
+pip3 install SpeechRecognition    # macOS/Linux
+pip install SpeechRecognition     # Windows
 ```
 
 ---
 
-## Installation
+## Setup Scripts
+
+### macOS / Linux — `setup.sh`
+
+Downloads ffmpeg and ffprobe into the project directory:
 
 ```bash
-git clone https://github.com/bbenkle/audiobook-splitter.git
-cd audiobook-splitter
+bash setup.sh
 ```
 
-No additional Python dependencies required for the core functionality.
+After running, use the `--ffmpeg-path` and `--ffprobe-path` flags if ffmpeg is not in your PATH:
+```bash
+python3 standalone_wrapper.py --input audiobook.m4b --ffmpeg-path ./ffmpeg --ffprobe-path ./ffprobe
+```
+
+### Windows — `setup.bat`
+
+Downloads ffmpeg and ffprobe into the project directory using PowerShell:
+
+```powershell
+.\setup.bat
+```
+
+After running, use the `--ffmpeg-path` and `--ffprobe-path` flags:
+```powershell
+python standalone_wrapper.py --input audiobook.m4b --ffmpeg-path .\ffmpeg.exe --ffprobe-path .\ffprobe.exe
+```
+
+> **Note for Windows users:** If you see a security warning when running the setup script, right-click `setup.bat` and choose **Run as administrator**.
 
 ---
 
@@ -60,7 +124,8 @@ No additional Python dependencies required for the core functionality.
 ### Command Line
 
 ```bash
-python3 standalone_wrapper.py --input audiobook.m4b
+python3 standalone_wrapper.py --input audiobook.m4b   # macOS/Linux
+python standalone_wrapper.py --input audiobook.m4b    # Windows
 ```
 
 #### Help
@@ -120,7 +185,8 @@ python3 standalone_wrapper.py \
 ### GUI
 
 ```bash
-python3 audiobook_splitter_gui.py
+python3 audiobook_splitter_gui.py   # macOS/Linux
+python audiobook_splitter_gui.py    # Windows
 ```
 
 A Tkinter-based GUI with all the same options, real-time progress logging, and a stop button.
@@ -197,6 +263,8 @@ audiobook-splitter/
 ├── audiobook_processor.py      # Core processing logic
 ├── standalone_wrapper.py       # CLI entry point
 ├── audiobook_splitter_gui.py   # Tkinter GUI
+├── setup.sh                    # macOS/Linux setup script
+├── setup.bat                   # Windows setup script
 └── README.md
 ```
 
