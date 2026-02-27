@@ -60,13 +60,43 @@ No additional Python dependencies required for the core functionality.
 ### Command Line
 
 ```bash
-python standalone_wrapper.py --input audiobook.m4b
+python3 standalone_wrapper.py --input audiobook.m4b
+```
+
+#### Help
+
+```
+$ python3 standalone_wrapper.py --help
+
+usage: standalone_wrapper.py [-h] --input INPUT [--output OUTPUT]
+                             [--method {metadata,silence,speech,json}]
+                             [--json JSON] [--format FORMAT]
+                             [--bitrate BITRATE] [--mono]
+                             [--ffmpeg-path FFMPEG_PATH]
+                             [--ffprobe-path FFPROBE_PATH]
+
+Audiobook Chapter Splitter
+
+options:
+  -h, --help            show this help message and exit
+  --input INPUT         Input audiobook file
+  --output OUTPUT       Output directory
+  --method {metadata,silence,speech,json}
+                        Detection method
+  --json JSON           JSON file with chapters
+  --format FORMAT       Output format
+  --bitrate BITRATE     Audio bitrate
+  --mono                Convert to mono
+  --ffmpeg-path FFMPEG_PATH
+                        Path to ffmpeg executable
+  --ffprobe-path FFPROBE_PATH
+                        Path to ffprobe executable
 ```
 
 #### All Options
 
 ```bash
-python standalone_wrapper.py \
+python3 standalone_wrapper.py \
   --input audiobook.m4b \
   --output ./chapters \
   --method metadata \
@@ -90,7 +120,7 @@ python standalone_wrapper.py \
 ### GUI
 
 ```bash
-python audiobook_splitter_gui.py
+python3 audiobook_splitter_gui.py
 ```
 
 A Tkinter-based GUI with all the same options, real-time progress logging, and a stop button.
@@ -103,28 +133,28 @@ A Tkinter-based GUI with all the same options, real-time progress logging, and a
 Extracts chapter markers embedded in the audiobook file. Most M4B audiobooks from Audible or ripped from CD include these. Falls back to silence detection if none are found.
 
 ```bash
-python standalone_wrapper.py --input audiobook.m4b --method metadata
+python3 standalone_wrapper.py --input audiobook.m4b --method metadata
 ```
 
 ### `silence`
 Detects chapter breaks by finding silent gaps in the audio. Works well for audiobooks without embedded metadata.
 
 ```bash
-python standalone_wrapper.py --input audiobook.mp3 --method silence
+python3 standalone_wrapper.py --input audiobook.mp3 --method silence
 ```
 
 ### `speech`
 Uses Google Speech Recognition to detect spoken chapter announcements (e.g. "Chapter One"). Slowest method — scans the entire file.
 
 ```bash
-python standalone_wrapper.py --input audiobook.mp3 --method speech
+python3 standalone_wrapper.py --input audiobook.mp3 --method speech
 ```
 
 ### `json`
 Load chapter timestamps from a JSON file you define. Useful if you already know the chapter positions.
 
 ```bash
-python standalone_wrapper.py --input audiobook.mp3 --method json --json chapters.json
+python3 standalone_wrapper.py --input audiobook.mp3 --method json --json chapters.json
 ```
 
 #### JSON Format
