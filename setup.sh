@@ -11,6 +11,19 @@ OS="$(uname -s)"
 
 if [ "$OS" = "Darwin" ]; then
     echo "Detected: macOS"
+
+    # Check for Xcode Command Line Tools
+    if ! xcode-select -p &> /dev/null; then
+        echo ""
+        echo "ERROR: Xcode Command Line Tools are not installed."
+        echo ""
+        echo "Please install them by running the following command, then re-run this script:"
+        echo "  xcode-select --install"
+        echo ""
+        echo "A dialog will appear — click Install and wait for it to finish."
+        exit 1
+    fi
+    echo "✓ Xcode Command Line Tools found"
     FFMPEG_URL="https://evermeet.cx/ffmpeg/getrelease/ffmpeg/zip"
     FFPROBE_URL="https://evermeet.cx/ffmpeg/getrelease/ffprobe/zip"
 

@@ -21,6 +21,8 @@ A Python tool to split audiobook files into individual chapter files. Supports m
 
 ### macOS / Linux
 
+> **macOS users:** Install Xcode Command Line Tools first if you haven't already — see the Requirements section below.
+
 ```bash
 git clone https://github.com/bbenkle/audiobook-splitter.git
 cd audiobook-splitter
@@ -43,12 +45,26 @@ The setup scripts will automatically download ffmpeg and ffprobe for you.
 
 ## Requirements
 
+### macOS: Install Command Line Tools First
+
+Before anything else on macOS, you need Xcode Command Line Tools installed. This provides Python 3, Git, and other essential developer tools. Open Terminal and run:
+
+```bash
+xcode-select --install
+```
+
+A dialog will appear — click **Install** and wait for it to finish (this may take a few minutes). You only need to do this once.
+
+Verify everything is ready:
+```bash
+xcode-select -p    # Should print a path like /Library/Developer/CommandLineTools
+python3 --version  # Should print Python 3.x.x
+git --version      # Should print git version x.x.x
+```
+
 ### Python 3
 
-**macOS:** Python 3 is pre-installed. Open Terminal and verify with:
-```bash
-python3 --version
-```
+**macOS:** Included with Xcode Command Line Tools (see above).
 
 **Linux:** Python 3 is pre-installed on most distributions. If not:
 ```bash
