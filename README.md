@@ -17,6 +17,16 @@ A Python tool to split audiobook files into individual chapter files. Supports m
 
 ---
 
+## Screenshots
+
+### GUI
+![GUI Screenshot](images/gui_screenshot.png)
+
+### Command Line
+![CLI Screenshot](images/cli_screenshot.png)
+
+---
+
 ## Quick Start
 
 ### macOS / Linux
